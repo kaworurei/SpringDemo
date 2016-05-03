@@ -2,11 +2,9 @@ package com.j2eedemo.controller;
 
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.ServletRequestUtils;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
@@ -47,6 +45,14 @@ public class HelloWorldController  {
     public ModelAndView paramsTest(HttpServletRequest request, @RequestParam("param") String param){
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("message", param+" "+ ServletRequestUtils.getStringParameter(request, "param", null));
+        modelAndView.setViewName("start");
+        return modelAndView;
+    }
+
+    @RequestMapping(value="/cookiebind", method = {RequestMethod.GET})
+    public ModelAndView Cookie(HttpServletRequest request, @CookieValue(value="JSESSIONID", defaultValue="") String jsessionId){
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("message", jsessionId);
         modelAndView.setViewName("start");
         return modelAndView;
     }
