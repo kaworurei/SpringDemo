@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 
 /**
  * Created by Administrator on 2016/5/3.
@@ -46,6 +48,13 @@ public class HelloWorldController  {
         modelAndView.addObject("message", param+" "+ ServletRequestUtils.getStringParameter(request, "param", null));
         modelAndView.setViewName("start");
         return modelAndView;
+    }
+
+    @RequestMapping(value = "/response",method = {RequestMethod.GET})
+    public ModelAndView httpResponse(HttpServletResponse response) throws IOException {
+        response.setContentType("application/json;charset=UTF-8");
+        response.getWriter().write("中文乱码");
+        return  null;
     }
 
     @RequestMapping(value="/cookiebind", method = {RequestMethod.GET})
