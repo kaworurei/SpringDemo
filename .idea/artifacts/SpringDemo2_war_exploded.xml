@@ -12,7 +12,8 @@
           <element id="library" level="application" name="SpringMVC" />
           <element id="file-copy" path="E:/J2EElib/SpringMVC/jstl.jar" />
           <element id="file-copy" path="E:/J2EElib/SpringMVC/standard.jar" />
-          <element id="library" level="application" name="org.codehaus.jackson:jackson" />
+          <element id="library" level="application" name="com.fasterxml.jackson.core:jackson-core:2.7.4" />
+          <element id="library" level="application" name="com.fasterxml.jackson.core:jackson-databind:2.7.4" />
         </element>
       </element>
     </root>

@@ -22,7 +22,7 @@
             var postdata = '{"username":"' + $('#username').val() + '","password":"' + $('#password').val() + '"}';
             $.ajax({
                 type : 'POST',
-                contentType : 'application/json',
+                contentType : 'application/json;',
                 url : 'http://localhost:8080/SpringDemo/requestbodybind',
                 processData : false,
                 dataType : 'json',

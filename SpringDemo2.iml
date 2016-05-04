@@ -51,6 +51,7 @@
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="library" name="org.codehaus.jackson:jackson" level="application" />
+    <orderEntry type="library" name="com.fasterxml.jackson.core:jackson-core:2.7.4" level="application" />
+    <orderEntry type="library" name="com.fasterxml.jackson.core:jackson-databind:2.7.4" level="application" />
   </component>
 </module>
