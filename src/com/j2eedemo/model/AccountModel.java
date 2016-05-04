@@ -6,6 +6,10 @@ public class AccountModel
   implements Serializable
 {
   private static final long serialVersionUID = -4018766759111421222L;
+
+  public AccountModel(){
+
+  }
   private String username;
   private String password;
 
