@@ -41,6 +41,13 @@
         <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
     </context:component-scan>
 
+    <!-- 静态资源映射 -->
+    <mvc:resources mapping="/js/**" location="/WEB-INF/js/" />
+    <!--<mvc:resources mapping="/css/**" location="/WEB-INF/css/" />-->
+    <!--<mvc:resources mapping="/fonts/**" location="/WEB-INF/fonts/" />-->
+    <!--<mvc:resources mapping="/plugins/**" location="/WEB-INF/plugins/" />-->
+    <!--<mvc:resources mapping="images/**" location="/WEB-INF/images/" />-->
+    <!-- 当上面要访问的静态资源不包括在上面的配置中时，则根据此配置来访问 -->
     <mvc:default-servlet-handler/>
 
     <!-- ViewResolver -->
@@ -65,4 +72,18 @@
             <!--</list>-->
         <!--</property>-->
     <!--</bean>-->
+
+    <mvc:interceptors>
+        <!--<mvc:interceptor>-->
+            <!--&lt;!&ndash; 匹配的是url路径， 如果不配置或/**,将拦截所有的Controller &ndash;&gt;-->
+            <!--<mvc:mapping path="/" />-->
+            <!--<mvc:mapping path="/user/**" />-->
+            <!--<mvc:mapping path="/test/**" />-->
+            <!--<bean class="com.alibaba.interceptor.CommonInterceptor"></bean>-->
+        <!--</mvc:interceptor>-->
+        <!-- 国际化操作拦截器 如果采用基于（请求/Session/Cookie）则必需配置 -->
+        <bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor" />
+        <!-- 如果不定义 mvc:mapping path 将拦截所有的URL请求 -->
+        <bean class="com.j2eedemo.auth.AuthInterceptor"></bean>
+    </mvc:interceptors>
 </beans>

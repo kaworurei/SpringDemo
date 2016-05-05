@@ -1,6 +1,7 @@
 package com.j2eedemo.controller;
 
 
+import com.j2eedemo.auth.AuthPassport;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.ServletRequestUtils;
 import org.springframework.web.bind.annotation.*;
@@ -33,6 +34,7 @@ public class HelloWorldController  {
         return modelAndView;
     }
 
+    @AuthPassport
     @RequestMapping(value="/*", method = {RequestMethod.GET})
     public ModelAndView urlTest(){
         ModelAndView modelAndView = new ModelAndView();
@@ -40,7 +42,7 @@ public class HelloWorldController  {
         modelAndView.setViewName("start");
         return modelAndView;
     }
-//
+
 //    @RequestParam(value="username", required=true, defaultValue="AAA")。
     @RequestMapping(value="/param", params="param", method = {RequestMethod.GET})
     public ModelAndView paramsTest(HttpServletRequest request, @RequestParam("param") String param){
